@@ -1,18 +1,23 @@
 #include "monty.h"
 /**
- * pop - remove top of the stack
- * @stack: pointer to the first node
- * @line_num: number of lines
+ * f_pop - prints the top
+ * @head: stack head
+ * @counter: line_number
+ * Return: no return
 */
-void pop(stack_t **stack, unsigned int line_num)
+void f_pop(stack_t **head, unsigned int counter)
 {
-stack_t *temp;
+	stack_t *h;
 
-if (*stack == NULL)
-{
-fprintf(stderr, "L%u: can't pint, stack empty\n", line_num);
-}
-temp = *stack;
-*stack = (*stack)->next;
-free(temp);
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
+	}
+	h = *head;
+	*head = h->next;
+	free(h);
 }
