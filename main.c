@@ -33,5 +33,5 @@ for (token = strtok(line, " \t\n"); token; token = strtok(NULL, " \t\n"))
 opcode(token, stack, *line_num);
 }}
 fclose(monty);
-free(stack);
+free_stack(*stack);
 }
