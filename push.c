@@ -7,36 +7,35 @@
 void push(stack_t **stack, unsigned int line_num)
 {
 stack_t *new_node;
-int i, arg_int;
-char *arg = strtok(NULL, " \t\n");
+int arg_int;
+char *arg = strtok(NULL, " \t\n$");
+size_t i, len;
 
+if (!arg)
+{fprintf(stderr, "L%u: usage: push integer\n", line_num);
+exit(EXIT_FAILURE);
+}
+len = strcspn(arg, "\n");
+arg[len] = '\0';
 for (i = 0; arg[i] != '\0'; i++)
 {
-if (!isdigit(arg[i]))
-{
-fprintf(stderr, "L%u: usage: push integer\n", line_num);
+if (!isdigit(arg[i]) && !(i == 0 && (arg[i] == '+' || arg[i] == '-')))
+{fprintf(stderr, "L%u: usage: push integer\n", line_num);
 exit(EXIT_FAILURE);
-}
+}}
 arg_int = atoi(arg);
-}
-new_node = malloc(sizeof(new_node));
+new_node = malloc(sizeof(stack_t));
 if (new_node == NULL)
-{
-fprintf(stderr, "Error: malloc failed\n");
+{fprintf(stderr, "Error: malloc failed\n");
 exit(EXIT_FAILURE);
 }
-if (*stack == NULL)
-{
 new_node->n = arg_int;
-new_node->next = NULL;
 new_node->prev = NULL;
-new_node->n = arg_int;
+if (*stack != NULL)
+{new_node->next = *stack;
+(*stack)->prev = new_node;
 }
 else
-{
-new_node->n = arg_int;
-new_node->prev = NULL;
-new_node->next = *stack;
-(*stack)->prev = new_node;
+new_node->next = NULL;
 *stack = new_node;
-}}
+}

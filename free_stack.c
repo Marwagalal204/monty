@@ -10,7 +10,6 @@ while (stack != NULL)
 {
 stack_t *temp;
 temp = stack;
-
 stack = stack->next;
 free(temp);
 }}
