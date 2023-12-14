@@ -45,5 +45,7 @@ int add(stack_t **head, unsigned int line_num);
 void nop(stack_t **head, unsigned int line_num);
 void opcode(char *opcode, stack_t **stack, unsigned int line_num);
 void free_stack(stack_t *stack);
+int sub(stack_t **stack, unsigned int line_num);
+int mul(stack_t **stack, unsigned int line_num);
 
 #endif

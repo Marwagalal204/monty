@@ -14,5 +14,4 @@ while (temp != NULL)
 {
 printf("%d\n", temp->n);
 temp = temp->next;
-}
-}
+}}

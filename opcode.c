@@ -21,6 +21,10 @@ else if (strcmp(opcode, "add") == 0)
 add(stack, line_num);
 else if (strcmp(opcode, "nop") == 0)
 nop(stack, line_num);
+else if (strcmp(opcode, "sub") == 0)
+sub(stack, line_num);
+else if (strcmp(opcode, "mul") == 0)
+mul(stack, line_num);
 else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_num, opcode);
