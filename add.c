@@ -20,6 +20,7 @@ temp = *stack;
 res = (*stack)->n + temp->n;
 (*stack)->n = res;
 free(temp);
+if (*stack != NULL)
 (*stack)->prev = NULL;
 return (res);
 }

@@ -17,7 +17,7 @@ exit(EXIT_FAILURE);
 }
 temp = *stack;
 *stack = temp->next;
-if (temp == 0)
+if (temp->n == 0)
 {
 fprintf(stderr, "L%u: division by zero\n", line_num);
 exit(EXIT_FAILURE);
@@ -25,6 +25,7 @@ exit(EXIT_FAILURE);
 res = (*stack)->n % temp->n;
 (*stack)->n = res;
 free(temp);
+if (*stack != NULL)
 (*stack)->prev = NULL;
 return (res);
 }
