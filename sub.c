@@ -20,6 +20,5 @@ temp = *stack;
 res = (*stack)->n - temp->n;
 (*stack)->n = res;
 free(temp);
-(*stack)->prev = NULL;
 return (res);
 }
