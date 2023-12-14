@@ -27,6 +27,8 @@ else if (strcmp(opcode, "mul") == 0)
 mul(stack, line_num);
 else if (strcmp(opcode, "div") == 0)
 _div(stack, line_num);
+else if (strcmp(opcode, "mod") == 0)
+mod(stack, line_num);
 else
 {
 fprintf(stderr, "L%u: unknown instruction %s\n", line_num, opcode);
