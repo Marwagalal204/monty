@@ -7,7 +7,7 @@
 */
 int main(int argc, char **argv)
 {
-char *line = NULL, *token;
+char *line = NULL, *token, *line_copy;
 size_t line_size = 0;
 FILE *monty;
 stack_t *stack = NULL;
@@ -27,12 +27,17 @@ exit(EXIT_FAILURE);
 while (getline(&line, &line_size, monty) != -1)
 {
 line_num++;
-for (token = strtok(line, " \t\n"); token; token = strtok(NULL, " \t\n"))
+line_copy = strdup(line);
+if (line_copy == NULL)
+exit(EXIT_FAILURE);
+for (token = strtok(line_copy, " \t\n"); token; token = strtok(NULL, " \t\n"))
 {
 opcode(token, &stack, line_num);
-}}
-fclose(monty);
+}
+free(line_copy);
+}
 free(line);
 free_stack(stack);
+fclose(monty);
 return (0);
 }
